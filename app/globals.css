@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap');
+
+@import "tailwindcss";
+
+
+
+:root {
+  --background: #F7F3EF;
+  --foreground: #2B2B2B;
+  --font-modern: 'Manrope', sans-serif;
+
+  /* === YOULIBUS THEME COLORS === */
+  --color-primary: #C65D3B;        /* Terracotta */
+  --color-primary-dark: #A94E30;
+
+  --color-secondary: #D4A017;      /* Gold */
+  --color-secondary-light: #E6B84C;
+
+  --color-accent: #FF6F61;         /* Coral */
+
+  --color-green: #1F4D3A;          /* Forest Green */
+  --color-green-light: #2F6F55;
+
+  --color-cream: #F7F3EF;
+  --color-white: #FFFFFF;
+  --color-dark: #2B2B2B;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+
+  --color-accent: var(--color-accent);
+
+  --color-green: var(--color-green);
+  --color-green-light: var(--color-green-light);
+
+  --color-cream: var(--color-cream);
+  --color-white: var(--color-white);
+  --color-dark: var(--color-dark);
+
+  --font-sans: var(--font-modern);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-modern);
+}
+.custom-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scroll-container {
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+      /* orange: "#ff6700", */
+      /* blue: "#011228", */
+
+/* background: #C43737; */
+
+
+
+
+
+
+
+
+/* @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+
+
+
+
+
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
