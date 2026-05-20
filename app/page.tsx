@@ -5,7 +5,7 @@ import AboutSection from "@/src/components/About";
 import Hero from "@/src/components/Hero";
 import Footer from "@/src/components/Footer";
 import Nav from "@/src/components/Nav";
-import Recent from "@/src/components/RecentProjects";
+import Recent from "@/src/components/Services";
 import UpcomingProject from "@/src/components/Upcoming";
 import Contact from "@/src/components/Contact";
 // import DonateModal from "@/src/components/Donate";

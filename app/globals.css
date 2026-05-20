@@ -8,22 +8,27 @@
   --background: #F7F3EF;
   --foreground: #2B2B2B;
   --font-modern: 'Manrope', sans-serif;
+  /* Primary Brand Pink */
+  --color-primary: #D41473;
+  --color-primary-dark: #B01060;
+  --color-primary-light: #F85AA3;
 
-  /* === YOULIBUS THEME COLORS === */
-  --color-primary: #C65D3B;        /* Terracotta */
-  --color-primary-dark: #A94E30;
+  /* Soft Luxury Pink */
+  --color-secondary: #FFC1DA;
+  --color-secondary-light: #FFE4EF;
 
-  --color-secondary: #D4A017;      /* Gold */
-  --color-secondary-light: #E6B84C;
+  /* Elegant Accent */
+  --color-accent: #FF4F95;
 
-  --color-accent: #FF6F61;         /* Coral */
+  /* Deep Text / Premium Plum */
+  --color-dark: #5B0B35;
+  --color-dark-light: #7A1E4D;
 
-  --color-green: #1F4D3A;          /* Forest Green */
-  --color-green-light: #2F6F55;
-
-  --color-cream: #F7F3EF;
+  /* Neutral System */
   --color-white: #FFFFFF;
-  --color-dark: #2B2B2B;
+  --color-light: #FFF8FB;
+  --color-border: #F3D3E2;
+  --color-muted: #A06A84;
 }
 @theme inline {
   --color-background: var(--background);

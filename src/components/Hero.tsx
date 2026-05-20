@@ -9,35 +9,35 @@ const slides = [
     title: "Empower. Elevate. Excel.",
     description:
       "Unlocking opportunities, support, and platforms that help young women in business rise and thrive.",
-    bg: "/images/5.jpg",
+    bg: "/images/1.jpeg",
   },
   {
     id: 2,
     title: "Every Voice Matters",
     description:
       "Creating space where every young woman is seen, valued, and empowered—no matter her background or industry.",
-    bg: "/images/6.jpg",
+    bg: "/images/2.jpeg",
   },
   {
     id: 3,
     title: "Stronger Together",
     description:
       "Building powerful partnerships that turn shared vision into real impact for women in business.",
-    bg: "/images/5.jpeg",
+    bg: "/images/3.jpeg",
   },
   {
     id: 4,
     title: "Think Forward",
     description:
       "Driving bold ideas and smart solutions to help young women succeed in a fast-changing world.",
-    bg: "/images/3.jpeg",
+    bg: "/images/4.jpeg",
   },
   {
     id: 5,
     title: "Built on Trust",
     description:
       "Leading with honesty, transparency, and integrity in every action, every program, every time.",
-    bg: "/images/1.jpeg",
+    bg: "/images/5.JPEG",
   },
 ];
 

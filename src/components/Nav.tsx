@@ -26,7 +26,7 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-cream/90 backdrop-blur-md shadow-sm">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-md shadow-sm">
       <div className="max-w-[1300px] mx-auto flex justify-between items-center px-4 md:px-12 h-16">
         {/* Logo */}
         <div className="w-25 h-25 flex items-center cursor-pointer">
