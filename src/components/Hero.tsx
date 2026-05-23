@@ -9,35 +9,35 @@ const slides = [
     title: "Empower. Elevate. Excel.",
     description:
       "Unlocking opportunities, support, and platforms that help young women in business rise and thrive.",
-    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(10).jpeg",
+    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/41.jpeg",
   },
   {
     id: 2,
     title: "Every Voice Matters",
     description:
       "Creating space where every young woman is seen, valued, and empowered—no matter her background or industry.",
-    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(8).jpeg",
+    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/10.jpeg",
   },
   {
     id: 3,
     title: "Stronger Together",
     description:
       "Building powerful partnerships that turn shared vision into real impact for women in business.",
-    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.27.41%20(9).jpeg",
+    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/21.jpeg",
   },
   {
     id: 4,
     title: "Think Forward",
     description:
       "Driving bold ideas and smart solutions to help young women succeed in a fast-changing world.",
-    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(4).jpeg",
+    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/25.jpeg",
   },
   {
     id: 5,
     title: "Built on Trust",
     description:
       "Leading with honesty, transparency, and integrity in every action, every program, every time.",
-    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2014.01.53%20(4).jpeg",
+    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/29.jpeg",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function HeroSlider() {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -50, opacity: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl bg-white/80 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-lg"
+            className="max-w-xl bg-white/80 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-lg"
           >
             <h1 className="text-3xl md:text-5xl font-extrabold text-dark leading-tight">
               {slides[index].title}
