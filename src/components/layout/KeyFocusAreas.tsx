@@ -142,7 +142,10 @@ export default function KeyFocusAreas() {
 
                   {/* hover underline */}
                   <motion.div
-                    className="h-[2px] bg-pink-500 mt-4 w-0 group-hover:w-full transition-all duration-500"
+                    className="h-[2px] mt-4 w-0 group-hover:w-full transition-all duration-500"
+                        style={{
+              background: "var(--color-primary)",
+            }}
                   />
                 </div>
               </motion.div>
