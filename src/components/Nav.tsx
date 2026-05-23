@@ -5,7 +5,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import { joinGroup } from "@/lib/joinGroup";
-
+import Logo from '@/src/components/Logo'
 const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
   const [nav, setNav] = useState(false);
 
@@ -26,49 +26,60 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-md shadow-sm">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-xl "
+
+    >
       <div className="max-w-[1300px] mx-auto flex justify-between items-center px-4 md:px-12 h-16">
+
         {/* Logo */}
-        <div className="w-25 h-25 flex items-center cursor-pointer">
+        <div className="w-12 h-12 flex items-center cursor-pointer">
           <Link to="hero" smooth offset={-80} duration={500}>
-            <img
-              src="/images/icon.png"
-              alt="Logo"
-              className="h-full w-full object-contain"
-            />
+            <Logo/>
           </Link>
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-x-6 font-semibold text-sm items-center text-dark">
+        <ul className="hidden md:flex gap-x-8 text-sm font-medium"
+          style={{ color: "var(--foreground)" }}
+        >
           {navItems.map(({ name, to }) => (
             <li key={name} className="relative cursor-pointer group">
               <Link to={to} smooth offset={-80} duration={500}>
                 {name}
-              </Link>
-
-              {/* underline */}
-              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-secondary group-hover:w-full transition-all duration-300" />
+              </Link>              {/* underline */}
+              <span
+                className="absolute left-0 -bottom-1 h-[2px] w-0 group-hover:w-full transition-all duration-300"
+                style={{ background: "var(--color-primary)" }}
+              />
             </li>
           ))}
         </ul>
 
         {/* Desktop Buttons */}
-        <div className="hidden md:flex gap-x-4 items-center text-sm font-semibold">
-          {/* Donate (secondary style) */}
+        <div className="hidden md:flex gap-x-3 items-center text-sm font-semibold">
+
+          {/* Donate */}
           <motion.button
             onClick={onDonateClick}
             whileHover={{ scale: 1.05 }}
-            className="border border-primary text-primary hover:bg-primary hover:text-white rounded-full px-6 py-2 transition"
+            className="px-5 py-2 rounded-full border transition"
+            style={{
+              borderColor: "var(--color-primary)",
+              color: "var(--color-primary)",
+              background: "transparent",
+            }}
           >
             Donate
           </motion.button>
 
-          {/* Volunteer (primary style) */}
+          {/* Volunteer */}
           <motion.button
             onClick={joinGroup}
             whileHover={{ scale: 1.05 }}
-            className="bg-primary text-white hover:bg-primary-dark rounded-full px-6 py-2 transition"
+            className="px-5 py-2 rounded-full text-white transition"
+            style={{
+              background: "var(--color-primary)",
+            }}
           >
             Volunteer
           </motion.button>
@@ -77,7 +88,8 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
         {/* Mobile Toggle */}
         <div
           onClick={toggleNav}
-          className="md:hidden flex items-center justify-center h-10 w-10 text-2xl cursor-pointer z-50 text-primary"
+          className="md:hidden flex items-center justify-center h-10 w-10 text-2xl cursor-pointer"
+          style={{ color: "var(--color-primary)" }}
         >
           {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
         </div>
@@ -88,10 +100,17 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
         initial={false}
         animate={nav ? "open" : "closed"}
         variants={menuVariants}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="fixed top-0 left-0 h-screen w-[75%] bg-cream z-40 p-8 md:hidden shadow-lg"
+        transition={{ type: "spring", stiffness: 280, damping: 28 }}
+        className="fixed top-0 left-0 h-screen w-[78%] backdrop-blur-2xl border-r p-8 md:hidden shadow-xl"
+        style={{
+          background: "rgba(245, 245, 247, 0.95)",
+          borderColor: "var(--color-border)",
+        }}
       >
-        <ul className="flex flex-col gap-8 text-lg font-semibold text-dark mt-8">
+        <ul
+          className="flex flex-col gap-8 text-lg font-medium mt-10"
+          style={{ color: "var(--foreground)" }}
+        >
           {navItems.map(({ name, to }) => (
             <li key={name}>
               <Link
@@ -107,10 +126,14 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
           ))}
 
           {/* Mobile Buttons */}
-          <li>
+          <li className="pt-6">
             <button
               onClick={onDonateClick}
-              className="w-full border border-primary text-primary hover:bg-primary hover:text-white rounded-full px-6 py-3 transition"
+              className="w-full px-6 py-3 rounded-full border"
+              style={{
+                borderColor: "var(--color-primary)",
+                color: "var(--color-primary)",
+              }}
             >
               Donate
             </button>
@@ -119,7 +142,8 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
           <li>
             <button
               onClick={joinGroup}
-              className="w-full bg-primary text-white hover:bg-primary-dark rounded-full px-6 py-3 transition"
+              className="w-full px-6 py-3 rounded-full text-white"
+              style={{ background: "var(--color-primary)" }}
             >
               Volunteer
             </button>

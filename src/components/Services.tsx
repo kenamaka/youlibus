@@ -7,27 +7,27 @@ const services = [
   {
     title: "Community Empowerment Hub",
     desc: "Equipping individuals with entrepreneurial and vocational skills to promote self-reliance and sustainable growth.",
-    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.27.41%20(15).jpeg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/22.jpeg",
   },
   {
     title: "Education Access Program",
     desc: "Providing scholarships, learning materials, and support for quality education access.",
-    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.27.41%20(7).jpeg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/4.jpeg",
   },
   {
     title: "Women Rise Initiative",
     desc: "Empowering women through business mentorship, leadership, and financial independence.",
-    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.24.07.jpeg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/30.jpeg",
   },
   {
     title: "Clean Water & Sanitation",
     desc: "Delivering sustainable clean water and sanitation systems to underserved communities.",
-    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(1).jpeg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/1.jpeg",
   },
   {
     title: "Green Futures Initiative",
     desc: "Driving environmental sustainability through tree planting and climate awareness.",
-    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(10).jpeg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/2.jpeg",
   },
 ];
 
@@ -80,36 +80,56 @@ export default function Recent() {
   };
 
   return (
-    <section
+   <section
       ref={sectionRef}
       id="recent"
-      className="relative w-full bg-white py-20 overflow-hidden"
+      className="relative py-24 overflow-hidden"
+      style={{ background: "var(--background)" }}
     >
-      {/* ---------------- HEADING ---------------- */}
+      {/* Soft glow accents */}
+      <div
+        className="absolute top-0 left-0 w-96 h-96 blur-3xl opacity-20 rounded-full"
+        style={{ background: "var(--color-primary-light)" }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-96 h-96 blur-3xl opacity-10 rounded-full"
+        style={{ background: "var(--color-primary)" }}
+      />
 
-      <div className="px-6 md:px-18 mb-14">
+      {/* HEADER */}
+      <div className="px-6 md:px-16 mb-14 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="uppercase tracking-[0.3em] text-primary text-sm font-bold mb-4">
+          <p
+            className="uppercase tracking-[0.3em] text-sm font-bold mb-4"
+            style={{ color: "var(--color-primary)" }}
+          >
             What We Do
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-extrabold text-[#5B0B35] leading-tight max-w-4xl">
-            Empowering Women &
-            <span className="gradient-text"> Transforming Communities</span>
+          <h2
+            className="text-4xl md:text-6xl font-extrabold leading-tight"
+            style={{ color: "var(--color-dark)" }}
+          >
+            Empowering Women &{" "}
+            <span style={{ color: "var(--color-primary)" }}>
+              Transforming Communities
+            </span>
           </h2>
 
-          <p className="text-[#7A1E4D] mt-6 max-w-2xl text-lg leading-relaxed font-medium">
+          <p
+            className="mt-6 text-lg leading-relaxed"
+            style={{ color: "var(--color-muted)" }}
+          >
             Discover the initiatives, programs, and impact-driven projects
             helping women and communities thrive sustainably.
           </p>
         </motion.div>
       </div>
-
       {/* ---------------- PARALLAX SLIDER ---------------- */}
 
       <div className="relative h-[80vh] w-full overflow-hidden">

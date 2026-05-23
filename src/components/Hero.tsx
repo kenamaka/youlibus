@@ -58,56 +58,75 @@ export default function HeroSlider() {
     exit: { x: "-100%", opacity: 0 },
   };
 
+  const fadeVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
   return (
-    <section id="hero" className="relative w-full h-screen overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={slides[index].id}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${slides[index].bg})` }}
-        />
-      </AnimatePresence>
+    
 
-      {/* Overlay gradient (subtle, not dark) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/10" />
+<section id="hero" className="relative w-full h-screen overflow-hidden">
+  {/* Background Slides */}
+  <AnimatePresence mode="sync">
+    <motion.div
+      key={slides[index].id}
+      variants={fadeVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 1 }}
+      className="absolute inset-0"
+    >
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${slides[index].bg})` }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-[1300px] mx-auto px-6 md:px-12 w-full">
-          <motion.div
-            key={slides[index].id + "-content"}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -50, opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-xl bg-white/80 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-lg"
-          >
-            <h1 className="text-3xl md:text-5xl font-extrabold text-dark leading-tight">
-              {slides[index].title}
-            </h1>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10" />
+    </motion.div>
+  </AnimatePresence>
 
-            <p className="mt-4 text-base md:text-lg text-dark/80">
-              {slides[index].description}
-            </p>
+  {/* Content */}
+  <div className="relative z-10 h-full flex items-center">
+    <div className="max-w-[1300px] mx-auto px-6 md:px-12 w-full">
+<AnimatePresence mode="wait">
+  <motion.div
+    key={slides[index].id}
+    initial={{ opacity: 0, x: 40 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -40 }}
+    transition={{
+      type: "spring",
+      stiffness: 70,
+      damping: 18,
+      mass: 0.8,
+    }}
+    className="max-w-xl bg-white/45 backdrop-blur-xl rounded-2xl p-8 md:p-10 shadow-xl border border-white/20"
+  >
+    <h1 className="text-3xl md:text-5xl font-extrabold text-dark leading-tight">
+      {slides[index].title}
+    </h1>
 
-            {/* CTA buttons */}
-            <div className="mt-6 flex gap-4">
-              <button className="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-dark transition">
-                Get Involved
-              </button>
+    <p className="mt-4 text-base md:text-lg text-dark/80">
+      {slides[index].description}
+    </p>
 
-              <button className="border border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition">
-                Learn More
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+    <div className="mt-6 flex gap-4">
+      <button className="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-dark transition">
+        Get Involved
+      </button>
+
+      <button className="border border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition">
+        Learn More
+      </button>
+    </div>
+  </motion.div>
+</AnimatePresence>
+    </div>
+  </div>
+</section>
   );
 }

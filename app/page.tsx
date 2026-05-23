@@ -21,9 +21,10 @@ export default function Home() {
       <Nav onDonateClick={openDonate} />
       <Hero />
       <AboutSection />
-      <UpcomingProject onDonateClick={openDonate} />
+      {/* <UpcomingProject onDonateClick={openDonate} /> */}
+      <UpcomingProject />
       <Recent />
-      <Contact />
+      {/* <Contact /> */}
       <Footer/>
       
 

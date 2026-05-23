@@ -5,30 +5,52 @@
 
 
 :root {
-  --background: #F7F3EF;
-  --foreground: #2B2B2B;
+  /* Base Layout */
+  --background: #F5F5F7;
+  --foreground: #1F1F1F;
+
+  /* Typography */
   --font-modern: 'Manrope', sans-serif;
-  /* Primary Brand Pink */
-  --color-primary: #D41473;
-  --color-primary-dark: #B01060;
-  --color-primary-light: #F85AA3;
 
-  /* Soft Luxury Pink */
-  --color-secondary: #FFC1DA;
-  --color-secondary-light: #FFE4EF;
+  /* Deep Premium Purple */
+  --color-primary: #4C1D95;
+  --color-primary-dark: #3B1578;
+  --color-primary-light: #6D28D9;
 
-  /* Elegant Accent */
-  --color-accent: #FF4F95;
+  /* Accent Purple */
+  --color-accent: #5B21B6;
 
-  /* Deep Text / Premium Plum */
-  --color-dark: #5B0B35;
-  --color-dark-light: #7A1E4D;
+  /* Main Dark Theme */
+  --color-dark: #18181B;
+  --color-dark-light: #27272A;
 
-  /* Neutral System */
+  /* Neutral Palette */
   --color-white: #FFFFFF;
-  --color-light: #FFF8FB;
-  --color-border: #F3D3E2;
-  --color-muted: #A06A84;
+  --color-light: #FAFAFA;
+
+  /* Borders & Cards */
+  --color-border: #E4E4E7;
+
+  /* Text Hierarchy */
+  --color-muted: #71717A;
+  --color-muted-light: #A1A1AA;
+
+  /* Optional Overlays */
+  --color-overlay: rgba(24, 24, 27, 0.65);
+
+  /* Luxury Gradient Helpers */
+  --gradient-primary: linear-gradient(
+    135deg,
+    #4C1D95 0%,
+    #5B21B6 50%,
+    #6D28D9 100%
+  );
+
+  --gradient-dark: linear-gradient(
+    135deg,
+    #18181B 0%,
+    #27272A 100%
+  );
 }
 @theme inline {
   --color-background: var(--background);
@@ -74,64 +96,14 @@ body {
 }
 
 
-      /* orange: "#ff6700", */
-      /* blue: "#011228", */
+/* globals.css */
 
-/* background: #C43737; */
-
-
-
-
-
-
-
-
-/* @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-
-
-
-
-
-
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
+    
