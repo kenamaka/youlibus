@@ -19,10 +19,10 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
 
   const navItems = [
     { name: "Home", to: "hero" },
-    { name: "About", to: "about" },
-    { name: "Next Mission", to: "next" },
-    { name: "Projects", to: "recent" },
-    { name: "Contact", to: "contact" },
+    { name: "About Us", to: "about" },
+    { name: "Our Impact", to: "next" },
+    { name: "Upcoming Events", to: "recent" },
+    { name: "Who we are", to: "contact" },
   ];
 
   return (
@@ -55,37 +55,7 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
           ))}
         </ul>
 
-        {/* Desktop Buttons */}
-        <div className="hidden md:flex gap-x-3 items-center text-sm font-semibold">
-
-          {/* Donate */}
-          <motion.button
-            onClick={onDonateClick}
-            whileHover={{ scale: 1.05 }}
-            className="px-5 py-2 rounded-full border transition"
-            style={{
-              borderColor: "var(--color-primary)",
-              color: "var(--color-primary)",
-              background: "transparent",
-            }}
-          >
-            Donate
-          </motion.button>
-
-          {/* Volunteer */}
-          <motion.button
-            onClick={joinGroup}
-            whileHover={{ scale: 1.05 }}
-            className="px-5 py-2 rounded-full text-white transition"
-            style={{
-              background: "var(--color-primary)",
-            }}
-          >
-            Volunteer
-          </motion.button>
-        </div>
-
-        {/* Mobile Toggle */}
+            {/* Mobile Toggle */}
         <div
           onClick={toggleNav}
           className="md:hidden flex items-center justify-center h-10 w-10 text-2xl cursor-pointer"
@@ -126,28 +96,9 @@ const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
           ))}
 
           {/* Mobile Buttons */}
-          <li className="pt-6">
-            <button
-              onClick={onDonateClick}
-              className="w-full px-6 py-3 rounded-full border"
-              style={{
-                borderColor: "var(--color-primary)",
-                color: "var(--color-primary)",
-              }}
-            >
-              Donate
-            </button>
-          </li>
+          
 
-          <li>
-            <button
-              onClick={joinGroup}
-              className="w-full px-6 py-3 rounded-full text-white"
-              style={{ background: "var(--color-primary)" }}
-            >
-              Volunteer
-            </button>
-          </li>
+          
         </ul>
       </motion.div>
 

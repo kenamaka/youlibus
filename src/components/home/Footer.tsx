@@ -15,9 +15,10 @@ const Footer = () => {
 
   const footerNavItems = [
     { name: "Home", to: "hero" },
-    { name: "About", to: "about" },
-    { name: "Next Mission", to: "next" },
-    { name: "Projects", to: "recent" },
+    { name: "About Us", to: "about" },
+    { name: "Our Impact", to: "next" },
+    { name: "Upcoming Events", to: "recent" },
+    { name: "Who we are", to: "contact" },
   ];
 
   return (
@@ -41,19 +42,35 @@ const Footer = () => {
 
           {/* Logo / About */}
           <div className="space-y-4">
-            <img
-              alt="logo"
-              src="/images/icon.png"
-              className="w-14 h-auto object-contain invert"
-            />
-
             <p
               className="text-sm leading-relaxed max-w-sm"
               style={{ color: "rgba(255,255,255,0.7)" }}
             >
-              Empowering individuals and communities to build sustainable
-              livelihoods, achieve self-reliance, and create lasting impact.
+             To foster an inclusive global network of women leaders, innovators, and changemakers who collaborate to amplify women’s voices and drive transformative change. 
             </p>
+
+            {/* ADDRESS */}
+            <div className="space-y-2 mt-6">
+              <p
+                className="text-sm font-semibold"
+                style={{ color: "white" }}
+              >
+                Address
+              </p>
+              <p style={{ color: "rgba(255,255,255,0.7)" }} className="text-sm">
+                WETLAND Mall, Jabi, Abuja, Nigeria
+              </p>
+
+              <p
+                className="text-sm font-semibold mt-3"
+                style={{ color: "white" }}
+              >
+                Phone
+              </p>
+              <p style={{ color: "rgba(255,255,255,0.7)" }} className="text-sm">
+                08152704785
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}

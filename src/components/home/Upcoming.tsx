@@ -7,19 +7,19 @@ import { FaRegCalendarAlt, FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
 const events = [
   {
     id: 1,
-    title: "Feed 100 Project",
-    date: "August 24, 2026",
+    title: "YOULIBUS International conference and Awards",
+    date: "May 15, 2026",
     location: "Abuja, Nigeria",
     image:
       "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/29.jpeg",
     description:
-      "Providing meals and support packages to displaced families and vulnerable individuals.",
+      "With a focus on bridging the gender gap in entrepreneurship.",
     latest: true,
   },
   {
     id: 2,
-    title: "Community Food Drive",
-    date: "July 12, 2026",
+    title: "International women’s day webinar",
+    date: "May 12, 2026",
     location: "Lagos, Nigeria",
     image:
       "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/13.jpeg",
@@ -28,8 +28,8 @@ const events = [
   },
   {
     id: 3,
-    title: "Youth Empowerment Summit",
-    date: "June 02, 2026",
+    title: "YOULIBUS Purple Brunch",
+    date: "October 18, 2026",
     location: "Kano, Nigeria",
     image:
       "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/15.jpeg",
@@ -53,7 +53,7 @@ export default function EventsSection() {
 
   return (
     <section
-      className="relative py-28 overflow-hidden"
+      className="relative py-24 overflow-hidden"
       style={{ background: "var(--background)" }}
     >
       <div
@@ -67,45 +67,37 @@ export default function EventsSection() {
       />
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Header */}
+      <div className="px-6 md:px-16 mb-14 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-3xl px-6 md:px-12 mb-16"
         >
-          <span
-            className="inline-flex px-4 py-1 rounded-full text-sm font-semibold mb-5"
-            style={{
-              background: "var(--color-secondary-light)",
-              color: "var(--color-primary)",
-            }}
-          >
-            Events & Outreach
-          </span>
+          
 
           <h2
-            className="text-4xl md:text-6xl font-bold leading-tight"
-            style={{
-              color: "var(--color-dark)",
-              fontFamily: "var(--font-modern)",
-            }}
+            // className="text-3xl md:text-5xl font-extrabold leading-tight"
+            className="text-3xl md:text-5xl font-extrabold leading-tight mb-8"
+
+            style={{ color: "var(--color-dark)" }}
           >
-            Creating Impact Through
-            <span className="block" style={{ color: "var(--foreground)" }}>
-              Community Events
+            UPCOMING 
+            {" "}
+            <span style={{ color: "var(--color-primary)" }}>
+              EVENTS
             </span>
           </h2>
-
-          <p
-            className="mt-6 text-lg leading-relaxed"
-            style={{ color: "var(--color-muted)" }}
+           {/* <p
+            className="text-lg leading-relaxed mb-6 font-medium"
+            style={{ color: "var(--foreground)" }}
           >
-            Explore our latest and past outreach events making meaningful
-            impact across communities.
-          </p>
-        </motion.div>
+    
+  YOULIBUS bridges the gender gap in entrepreneurship by empowering women in business, providing over ₦10M+ in support to young women across various industries to strengthen their businesses and improve their livelihoods.
+          </p> */}
+
+             </motion.div>
+      </div>
 
         {/* Slider */}
         <div className="relative">
@@ -231,7 +223,7 @@ export default function EventsSection() {
                         color: "var(--color-white)",
                       }}
                     >
-                      Register Event
+                      Register Now
                       <FaArrowRight size={18} />
                     </motion.button>
                   </div>

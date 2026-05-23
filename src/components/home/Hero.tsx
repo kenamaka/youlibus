@@ -37,7 +37,7 @@ const slides = [
     title: "Built on Trust",
     description:
       "Leading with honesty, transparency, and integrity in every action, every program, every time.",
-    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/29.jpeg",
+    bg: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/8.jpeg",
   },
 ];
 

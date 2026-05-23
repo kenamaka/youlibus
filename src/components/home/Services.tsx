@@ -84,7 +84,7 @@ export default function Recent() {
    <section
       ref={sectionRef}
       id="recent"
-      className="relative py-24 overflow-hidden"
+      className="relative py-20 overflow-hidden"
       style={{ background: "var(--background)" }}
     >
       {/* Soft glow accents */}
@@ -104,29 +104,31 @@ export default function Recent() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p
-            className="uppercase tracking-[0.3em] text-sm font-bold mb-4"
-            style={{ color: "var(--color-primary)" }}
-          >
-          </p>
+          
 
           <h2
             // className="text-3xl md:text-5xl font-extrabold leading-tight"
-            className="text-4xl md:text-6xl font-extrabold leading-tight mb-8"
+            className="text-3xl md:text-5xl font-extrabold leading-tight mb-8"
 
             style={{ color: "var(--color-dark)" }}
           >
-            OUR KEY FOCUS 
+            OUR 
             {" "}
             <span style={{ color: "var(--color-primary)" }}>
-              AREAS
+              IMPACT
             </span>
           </h2>
+           <p
+            className="text-lg leading-relaxed mb-6 font-medium"
+            style={{ color: "var(--foreground)" }}
+          >
+    
+  YOULIBUS bridges the gender gap in entrepreneurship by empowering women in business, providing over ₦10M+ in support to young women across various industries to strengthen their businesses and improve their livelihoods.
+          </p>
 
              </motion.div>
       </div>
       {/* ---------------- PARALLAX SLIDER ---------------- */}
-<KeyFocusAreas/>
 
       <div className="relative h-[80vh] w-full overflow-hidden">
         {services.map((service, index) => {

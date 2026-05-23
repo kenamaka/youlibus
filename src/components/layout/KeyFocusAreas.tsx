@@ -80,11 +80,39 @@ const card: Variants = {
 
 export default function KeyFocusAreas() {
   return (
-    <section className="relative py-28 overflow-hidden bg-transparent">
+    <section className="relative py-20 overflow-hidden bg-transparent">
       {/* soft background glow */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-transparent blur-3xl opacity-30 rounded-full" />
-      <div className="absolute bottom-0 right-0 w-96 h-96  blur-3xl opacity-30 rounded-full" />
+    <div
+        className="absolute top-0 left-0 w-96 h-96 blur-3xl opacity-20 rounded-full"
+        style={{ background: "var(--color-primary-light)" }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-96 h-96 blur-3xl opacity-10 rounded-full"
+        style={{ background: "var(--color-primary)" }}
+      />
+      {/* HEADER */}
+      <div className="px-6 md:px-16 mb-14 max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+               <h2
+            // className="text-3xl md:text-5xl font-extrabold leading-tight"
+            className="text-4xl md:text-6xl font-extrabold leading-tight mb-8"
 
+            style={{ color: "var(--color-dark)" }}
+          >
+            OUR KEY FOCUS 
+            {" "}
+            <span style={{ color: "var(--color-primary)" }}>
+              AREAS
+            </span>
+          </h2>
+
+             </motion.div>
+      </div>
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
        
         {/* GRID */}
