@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CalendarDays, MapPin, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { FaRegCalendarAlt, FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
 
 const events = [
   {
@@ -10,7 +10,8 @@ const events = [
     title: "Feed 100 Project",
     date: "August 24, 2026",
     location: "Abuja, Nigeria",
-    image: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/29.jpeg",
+    image:
+      "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/29.jpeg",
     description:
       "Providing meals and support packages to displaced families and vulnerable individuals.",
     latest: true,
@@ -20,7 +21,8 @@ const events = [
     title: "Community Food Drive",
     date: "July 12, 2026",
     location: "Lagos, Nigeria",
-    image: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/13.jpeg",
+    image:
+      "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/13.jpeg",
     description:
       "Partnering with local communities to distribute food supplies and essentials.",
   },
@@ -29,7 +31,8 @@ const events = [
     title: "Youth Empowerment Summit",
     date: "June 02, 2026",
     location: "Kano, Nigeria",
-    image: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/15.jpeg",
+    image:
+      "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/15.jpeg",
     description:
       "Helping young people access mentorship, leadership, and career opportunities.",
   },
@@ -38,7 +41,8 @@ const events = [
     title: "Youth Empowerment Summit",
     date: "June 02, 2026",
     location: "Kano, Nigeria",
-    image: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/2.jpeg",
+    image:
+      "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/2.jpeg",
     description:
       "Helping young people access mentorship, leadership, and career opportunities.",
   },
@@ -52,7 +56,6 @@ export default function EventsSection() {
       className="relative py-28 overflow-hidden"
       style={{ background: "var(--background)" }}
     >
-      {/* Background Glow */}
       <div
         className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-40"
         style={{ background: "var(--color-secondary)" }}
@@ -90,10 +93,7 @@ export default function EventsSection() {
             }}
           >
             Creating Impact Through
-            <span
-              className="block"
-              style={{ color: "var(--foreground)" }}
-            >
+            <span className="block" style={{ color: "var(--foreground)" }}>
               Community Events
             </span>
           </h2>
@@ -107,7 +107,7 @@ export default function EventsSection() {
           </p>
         </motion.div>
 
-        {/* Modern Slider */}
+        {/* Slider */}
         <div className="relative">
           <div
             className="
@@ -141,14 +141,12 @@ export default function EventsSection() {
                     }
                   `}
                 >
-                  {/* Image */}
                   <img
                     src={event.image}
                     alt={event.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  {/* Overlay */}
                   <div
                     className="absolute inset-0"
                     style={{
@@ -157,7 +155,6 @@ export default function EventsSection() {
                     }}
                   />
 
-                  {/* Latest Badge */}
                   {event.latest && (
                     <div
                       className="absolute top-6 left-6 backdrop-blur-md text-xs font-bold px-4 py-2 rounded-full shadow-lg"
@@ -170,7 +167,6 @@ export default function EventsSection() {
                     </div>
                   )}
 
-                  {/* Content */}
                   <div className="absolute bottom-0 p-8 text-white w-full">
                     {/* Meta */}
                     <div className="flex flex-wrap gap-3 mb-4">
@@ -181,7 +177,7 @@ export default function EventsSection() {
                           border: "1px solid rgba(255,255,255,0.12)",
                         }}
                       >
-                        <CalendarDays size={16} />
+                        <FaRegCalendarAlt size={16} />
                         {event.date}
                       </div>
 
@@ -192,7 +188,7 @@ export default function EventsSection() {
                           border: "1px solid rgba(255,255,255,0.12)",
                         }}
                       >
-                        <MapPin size={16} />
+                        <FaMapMarkerAlt size={16} />
                         {event.location}
                       </div>
                     </div>
@@ -220,7 +216,7 @@ export default function EventsSection() {
                       {event.description}
                     </motion.p>
 
-                    {/* Register Button */}
+                    {/* Button */}
                     <motion.button
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
@@ -236,7 +232,7 @@ export default function EventsSection() {
                       }}
                     >
                       Register Event
-                      <ArrowRight size={18} />
+                      <FaArrowRight size={18} />
                     </motion.button>
                   </div>
                 </motion.div>
