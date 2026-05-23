@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import AboutSection from "@/src/components/About";
-import Hero from "@/src/components/Hero";
-import Footer from "@/src/components/Footer";
-import Nav from "@/src/components/Nav";
-import Recent from "@/src/components/Services";
-import UpcomingProject from "@/src/components/Upcoming";
-import Contact from "@/src/components/Contact";
+import AboutSection from "@/src/components/home/About";
+import Hero from "@/src/components/home/Hero";
+import Footer from "@/src/components/home/Footer";
+import Nav from "@/src/components/home/Nav";
+import Recent from "@/src/components/home/Services";
+import UpcomingProject from "@/src/components/home/Upcoming";
+import Contact from "@/src/components/home/Contact";
 // import DonateModal from "@/src/components/Donate";
 
 export default function Home() {
@@ -22,8 +22,9 @@ export default function Home() {
       <Hero />
       <AboutSection />
       {/* <UpcomingProject onDonateClick={openDonate} /> */}
-      <UpcomingProject />
       <Recent />
+      <UpcomingProject />
+
       {/* <Contact /> */}
       <Footer/>
       

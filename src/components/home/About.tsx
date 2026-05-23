@@ -73,12 +73,6 @@ export default function AboutSection() {
           className="w-full lg:w-6/12"
         >
           {/* LABEL */}
-          <p
-            className="uppercase tracking-[0.25em] text-sm font-bold mb-5"
-            style={{ color: "var(--color-primary)" }}
-          >
-            About YOULIBUS
-          </p>
 
           {/* HEADING */}
           <h2

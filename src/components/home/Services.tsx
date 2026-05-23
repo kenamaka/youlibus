@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import KeyFocusAreas from "../layout/KeyFocusAreas";
 
 const services = [
   {
@@ -95,7 +96,6 @@ export default function Recent() {
         className="absolute bottom-0 right-0 w-96 h-96 blur-3xl opacity-10 rounded-full"
         style={{ background: "var(--color-primary)" }}
       />
-
       {/* HEADER */}
       <div className="px-6 md:px-16 mb-14 max-w-4xl">
         <motion.div
@@ -108,29 +108,25 @@ export default function Recent() {
             className="uppercase tracking-[0.3em] text-sm font-bold mb-4"
             style={{ color: "var(--color-primary)" }}
           >
-            What We Do
           </p>
 
           <h2
-            className="text-4xl md:text-6xl font-extrabold leading-tight"
+            // className="text-3xl md:text-5xl font-extrabold leading-tight"
+            className="text-4xl md:text-6xl font-extrabold leading-tight mb-8"
+
             style={{ color: "var(--color-dark)" }}
           >
-            Empowering Women &{" "}
+            OUR KEY FOCUS 
+            {" "}
             <span style={{ color: "var(--color-primary)" }}>
-              Transforming Communities
+              AREAS
             </span>
           </h2>
 
-          <p
-            className="mt-6 text-lg leading-relaxed"
-            style={{ color: "var(--color-muted)" }}
-          >
-            Discover the initiatives, programs, and impact-driven projects
-            helping women and communities thrive sustainably.
-          </p>
-        </motion.div>
+             </motion.div>
       </div>
       {/* ---------------- PARALLAX SLIDER ---------------- */}
+<KeyFocusAreas/>
 
       <div className="relative h-[80vh] w-full overflow-hidden">
         {services.map((service, index) => {

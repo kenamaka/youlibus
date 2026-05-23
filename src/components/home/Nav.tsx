@@ -5,7 +5,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import { joinGroup } from "@/lib/joinGroup";
-import Logo from '@/src/components/Logo'
+import Logo from '@/src/components/home/Logo'
 const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
   const [nav, setNav] = useState(false);
 
