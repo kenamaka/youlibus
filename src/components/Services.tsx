@@ -7,27 +7,27 @@ const services = [
   {
     title: "Community Empowerment Hub",
     desc: "Equipping individuals with entrepreneurial and vocational skills to promote self-reliance and sustainable growth.",
-    img: "/images/5.jpg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.27.41%20(15).jpeg",
   },
   {
     title: "Education Access Program",
     desc: "Providing scholarships, learning materials, and support for quality education access.",
-    img: "/images/1.jpg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.27.41%20(7).jpeg",
   },
   {
     title: "Women Rise Initiative",
     desc: "Empowering women through business mentorship, leadership, and financial independence.",
-    img: "/images/8.jpg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2013.24.07.jpeg",
   },
   {
     title: "Clean Water & Sanitation",
     desc: "Delivering sustainable clean water and sanitation systems to underserved communities.",
-    img: "/images/11.jpg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(1).jpeg",
   },
   {
     title: "Green Futures Initiative",
     desc: "Driving environmental sustainability through tree planting and climate awareness.",
-    img: "/images/12.jpg",
+    img: "https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/WhatsApp%20Image%202026-05-23%20at%2010.20.25%20(10).jpeg",
   },
 ];
 
