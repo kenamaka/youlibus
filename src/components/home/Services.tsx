@@ -164,7 +164,7 @@ export default function Recent() {
                     scale: isActive ? 1.08 : 1,
                   }}
                   transition={{
-                    duration: 8,
+                    duration: 4,
                     ease: "linear",
                   }}
                 />
