@@ -60,12 +60,13 @@ export default function SplashScreen({
           {/* Badge */}
           <div className="mb-8 inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 backdrop-blur-xl">
             <p className="text-sm font-medium tracking-wide text-[#E4E4E7]">
-              AWARDS 2026
+              YOULIBUS AWARDS 2026
             </p>
           </div>
 
           {/* Heading */}
           <h1 className="text-left text-5xl font-black leading-[1.02] tracking-tight text-white md:text-7xl lg:text-8xl">
+            
             Celebrate
             <br />
             Excellence.
