@@ -10,7 +10,10 @@ import CandidateCard from "@/src/components/vote/CandidateCard";
 
 import { useCandidates } from "@/hooks/useCandidates";
 
-import { getFingerprint } from "@/lib/fingerprint";
+import {
+  getFingerprint,
+  getDeviceId,
+} from "@/lib/fingerprint";
 
 import {
   castVote,
@@ -21,7 +24,14 @@ export default function VotePage() {
   const { candidates, loading, refresh } =
     useCandidates();
 
+  // =====================================
+  // STATES
+  // =====================================
+
   const [fingerprint, setFingerprint] =
+    useState("");
+
+  const [deviceId, setDeviceId] =
     useState("");
 
   const [hasVoted, setHasVoted] =
@@ -30,19 +40,41 @@ export default function VotePage() {
   const [started, setStarted] =
     useState(false);
 
+  // =====================================
+  // INIT
+  // =====================================
+
   useEffect(() => {
     init();
   }, []);
 
-  // ✅ FIXED INIT (this is the missing piece)
   async function init() {
     try {
-      const id = await getFingerprint();
+      // =====================================
+      // GET DEVICE ID (persistent)
+      // =====================================
 
-      setFingerprint(id);
+      const localDeviceId = getDeviceId();
 
-      // 🔥 check DB if user already voted
-      const voted = await hasUserVoted(id);
+      setDeviceId(localDeviceId);
+
+      // =====================================
+      // GET FINGERPRINT
+      // =====================================
+
+      const fingerprintId =
+        await getFingerprint();
+
+      setFingerprint(fingerprintId);
+
+      // =====================================
+      // CHECK IF USER ALREADY VOTED
+      // =====================================
+
+      const voted = await hasUserVoted(
+        fingerprintId,
+        localDeviceId
+      );
 
       if (voted) {
         setHasVoted(true);
@@ -52,11 +84,29 @@ export default function VotePage() {
     }
   }
 
-  async function handleVote(candidateId: string) {
-    try {
-      await castVote(candidateId, fingerprint);
+  // =====================================
+  // HANDLE VOTE
+  // =====================================
 
-      toast.success("Vote submitted successfully");
+  async function handleVote(
+    candidateId: string
+  ) {
+    try {
+      const response = await castVote(
+        candidateId,
+        fingerprint,
+        deviceId
+      );
+
+      if (!response.success) {
+        setHasVoted(true);
+
+        toast.error(response.message);
+
+        return;
+      }
+
+      toast.success(response.message);
 
       setHasVoted(true);
 
@@ -64,20 +114,27 @@ export default function VotePage() {
     } catch (error: any) {
       console.error(error);
 
-      // 🔥 even if DB rejects, lock user anyway
+      // Lock UI even if backend rejects
       setHasVoted(true);
 
-      toast.error("You have already voted or something went wrong");
+      toast.error(
+        "You have already voted or something went wrong"
+      );
     }
   }
+
+  // =====================================
+  // LOADER
+  // =====================================
 
   if (loading) {
     return <Loader />;
   }
 
-  // =========================
-  // SPLASH SCREEN LOGIC
-  // =========================
+  // =====================================
+  // SPLASH SCREEN
+  // =====================================
+
   if (!started || hasVoted) {
     return (
       <SplashScreen
@@ -85,6 +142,7 @@ export default function VotePage() {
         onStart={() => {
           if (hasVoted) {
             window.history.back();
+
             return;
           }
 
@@ -94,9 +152,10 @@ export default function VotePage() {
     );
   }
 
-  // =========================
+  // =====================================
   // VOTING SCREEN
-  // =========================
+  // =====================================
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#18181B]">
       {/* Background Glows */}
@@ -104,7 +163,7 @@ export default function VotePage() {
 
       <div className="absolute bottom-[-150px] right-[-150px] h-[320px] w-[320px] rounded-full bg-[#4C1D95]/20 blur-3xl" />
 
-      {/* Top Fade */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30" />
 
       {/* Content */}
@@ -128,13 +187,13 @@ export default function VotePage() {
 
             {/* Subtitle */}
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#A1A1AA] md:text-lg md:leading-8">
-              Swipe through nominees and cast your vote.
-              You can only vote once.
+              Swipe through nominees and cast
+              your vote. You can only vote once.
             </p>
           </div>
         </div>
 
-        {/* Candidates Slider */}
+        {/* Candidate Slider */}
         <div
           className="
             flex snap-x snap-mandatory gap-6
@@ -143,15 +202,19 @@ export default function VotePage() {
             scrollbar-hide
           "
         >
-          {candidates.map((candidate, index) => (
-            <CandidateCard
-              key={candidate.id}
-              candidate={candidate}
-              index={index}
-              disabled={hasVoted}
-              onVote={() => handleVote(candidate.id)}
-            />
-          ))}
+          {candidates.map(
+            (candidate, index) => (
+              <CandidateCard
+                key={candidate.id}
+                candidate={candidate}
+                index={index}
+                disabled={hasVoted}
+                onVote={() =>
+                  handleVote(candidate.id)
+                }
+              />
+            )
+          )}
         </div>
       </div>
     </main>

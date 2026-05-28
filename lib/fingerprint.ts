@@ -1,39 +1,33 @@
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
-export async function getFingerprint() {
-  // =====================================
-  // 1. CHECK EXISTING DEVICE ID
-  // =====================================
+// ========================================
+// PERSISTENT DEVICE ID
+// ========================================
 
-  const existingDeviceId =
+export function getDeviceId() {
+  let deviceId =
     localStorage.getItem("vote_device_id");
 
-  if (existingDeviceId) {
-    return existingDeviceId;
+  if (!deviceId) {
+    deviceId = crypto.randomUUID();
+
+    localStorage.setItem(
+      "vote_device_id",
+      deviceId
+    );
   }
 
-  // =====================================
-  // 2. GENERATE FINGERPRINT
-  // =====================================
+  return deviceId;
+}
 
+// ========================================
+// FINGERPRINT ID
+// ========================================
+
+export async function getFingerprint() {
   const fp = await FingerprintJS.load();
 
   const result = await fp.get();
 
-  // =====================================
-  // 3. CREATE STRONGER PERSISTENT ID
-  // =====================================
-
-  const deviceId = `${result.visitorId}-${crypto.randomUUID()}`;
-
-  // =====================================
-  // 4. SAVE FOREVER
-  // =====================================
-
-  localStorage.setItem(
-    "vote_device_id",
-    deviceId
-  );
-
-  return deviceId;
+  return result.visitorId;
 }

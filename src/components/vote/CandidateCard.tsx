@@ -26,6 +26,7 @@ export default function CandidateCard({
     useState(false);
 
   return (
+    <>
     <motion.div
       onClick={() => setActive(true)}
       animate={{
@@ -153,5 +154,6 @@ export default function CandidateCard({
         <div className="absolute inset-0 rounded-[36px] ring-2 ring-[#6D28D9]/70" />
       )}
     </motion.div>
+    </>
   );
 }
