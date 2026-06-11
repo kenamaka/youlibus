@@ -3,4 +3,5 @@ export interface Candidate {
   name: string;
   image_url: string;
   vote_count: number;
+  category: string;
 }
