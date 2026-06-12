@@ -6,7 +6,7 @@ import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import { joinGroup } from "@/lib/joinGroup";
 import Logo from '@/src/components/home/Logo'
-const Navbar = ({ onDonateClick }: { onDonateClick: () => void }) => {
+const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   const toggleNav = () => setNav(!nav);

@@ -9,18 +9,11 @@ import Recent from "@/src/components/home/Services";
 import UpcomingProject from "@/src/components/home/Upcoming";
 import Contact from "@/src/components/home/Contact";
 import KeyFocusAreas from "@/src/components/layout/KeyFocusAreas";
-import Navbar from "@/src/components/home/Menu";
-// import DonateModal from "@/src/components/Donate";
 
 export default function Home() {
-  const [showDonate, setShowDonate] = useState(false);
-
-  const openDonate = () => setShowDonate(true);
-  const closeDonate = () => setShowDonate(false);
-
   return (
     <div className="overflow-x-hidden">
-      <Nav onDonateClick={openDonate} />
+      <Nav/>
       {/* <Navbar/> */}
       <Hero />
       <AboutSection />
