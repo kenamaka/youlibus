@@ -37,18 +37,7 @@ export default function DashboardStats() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      
-      {/* Total Votes */}
-      <div className="bg-zinc-900 border border-white/10 p-5 rounded-xl">
-        <p className="text-gray-400 text-sm">
-          Total Votes
-        </p>
-        <h2 className="text-2xl font-bold mt-2">
-          {votes.length}
-        </h2>
-      </div>
-
-    </div>
+   <>
+   </>
   );
 }

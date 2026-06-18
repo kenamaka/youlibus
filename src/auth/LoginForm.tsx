@@ -117,7 +117,7 @@ export default function LoginPage() {
           {/* INFO BOX (IMPORTANT UX FIX) */}
           <div className="bg-black/40 border border-white/10 rounded-xl p-4 mb-6 text-xs text-gray-300 space-y-1">
             <p>1. Enter your admin email</p>
-            <p>2. We will send a magic login link</p>
+            <p>2. We will send a login link</p>
             <p>3. Click the link in your email</p>
             <p>4. You will be redirected to dashboard</p>
           </div>
@@ -149,7 +149,7 @@ export default function LoginPage() {
             {/* SUCCESS */}
             {sent && (
               <div className="text-center text-sm text-green-400">
-                Magic link sent. Check your email inbox or spam folder.
+                 Link sent. Check your email inbox or spam folder.
               </div>
             )}
           </div>

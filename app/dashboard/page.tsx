@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
+import DashboardHeader from "@/src/auth/Navbar";
 import DashboardStats from "@/src/auth/Dashboard";
-import CategoryTable from "@/src/auth/Category";
-import Leaderboard from "@/src/auth/Leadership";
+import CategoryDistributionChart from "@/src/auth/Category";
+import WinnersGrid from "@/src/auth/WinnerGrid";
+import TopNomineesChart from "@/src/auth/TopNominee";
+import CategoryBreakdown from "@/src/auth/CateogryBreakdown";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -57,50 +60,45 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-     <div className="min-h-screen flex items-center justify-center bg-black text-white">
-  <div className="flex flex-col items-center gap-4">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin" />
 
-    {/* Spinner */}
-    <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
-
-    {/* Text */}
-    <p className="text-sm text-gray-400">
-      Loading dashboard...
-    </p>
-
-  </div>
-</div>
+          <p className="text-sm text-gray-500">
+            Loading dashboard...
+          </p>
+        </div>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-black text-white p-6 space-y-6">
-      
+    <main className="min-h-screen bg-gray-50">
       {/* HEADER */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          Voting Dashboard
-        </h1>
+      <DashboardHeader
+        email={user?.email}
+        onLogout={handleLogout}
+      />
 
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 px-4 py-2 rounded hover:bg-red-700 transition"
-        >
-          Logout
-        </button>
+      {/* CONTENT */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 space-y-6">
+
+        {/* OVERVIEW STATS */}
+        <DashboardStats />
+
+        {/* CATEGORY DISTRIBUTION */}
+        <CategoryDistributionChart />
+
+        {/* CURRENT CATEGORY WINNERS */}
+        <WinnersGrid />
+
+        {/* TOP NOMINEES OVERALL */}
+        <TopNomineesChart />
+
+        {/* CATEGORY ACCORDION BREAKDOWN */}
+        <CategoryBreakdown />
+
       </div>
-
-      {/* ADMIN INFO (optional future use) */}
-      {user && (
-        <p className="text-sm text-gray-400">
-          Logged in as: {user.email}
-        </p>
-      )}
-
-      {/* DASHBOARD COMPONENTS */}
-      <DashboardStats />
-      <CategoryTable />
-      <Leaderboard />
     </main>
   );
 }

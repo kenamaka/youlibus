@@ -140,7 +140,8 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
-} from "lucide-react";
+  ArrowLeft} from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface SplashScreenProps {
   completedCategories: number;
@@ -167,11 +168,12 @@ export default function SplashScreen({
         100
       : 0;
 
+      const router = useRouter()
   const description = votingCompleted
     ? "You have successfully completed voting in all award categories. Thank you for participating."
     : completedCategories > 0
       ? `You have completed ${completedCategories} of ${totalCategories} categories. Continue voting to submit all your selections.`
-      : "Vote across multiple award categories and support your favorite nominees.";
+      : " Cast your votes across multiple award categories and help your favorite nominees win. Voting takes just 5 minutes.";
 
   const buttonLabel = votingCompleted
     ? "Voting Completed"
@@ -182,6 +184,17 @@ export default function SplashScreen({
   return (
     <main className="relative flex min-h-screen overflow-hidden bg-[#18181B]">
       {/* Background */}
+
+      {votingCompleted && 
+           <motion.button
+        whileTap={{ scale: 0.95 }}
+        onClick={() => router.back()}
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 px-4 py-2 text-sm text-white hover:bg-white/20"
+      >
+        <ArrowLeft size={16} />
+        Back
+      </motion.button>
+      }
       <div className="absolute inset-0">
         <Image
           src="https://coeahyxujbefeiwxcbkx.supabase.co/storage/v1/object/public/servics-image/25.jpeg"
