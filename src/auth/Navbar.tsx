@@ -7,59 +7,75 @@ import {
   BarChart3,
   LayoutGrid,
   LogOut,
+  Home,
 } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 
 interface DashboardHeaderProps {
   email?: string;
   onLogout: () => void;
 }
 
-export default function DashNav({
+export default function DashboardHeader({
   email,
   onLogout,
 }: DashboardHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-const scrollToSection = (sectionId: string) => {
-  document.getElementById(sectionId)?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
 
-  setMenuOpen(false);
-};
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const isActive = (path: string) => pathname === path;
+
+  const navigate = (path: string) => {
+    router.push(path);
+    setMenuOpen(false);
+  };
+
   return (
     <>
-      {/* HEADER */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          {/* LEFT */}
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
               Dashboard
             </h1>
-
-            {/* <p className="text-sm text-gray-500 mt-1">
-              Manage categories, nominees and voting insights
-            </p> */}
           </div>
 
-          {/* DESKTOP NAV */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-3">
             <button
-  onClick={() => scrollToSection("categories")}
-  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition"
->
-  <LayoutGrid size={18} />
-  Categories
-</button>
+              onClick={() => navigate("/dashboard")}
+              className={`px-4 py-2 rounded-lg transition ${
+                isActive("/dashboard")
+                  ? "bg-purple-600 text-white"
+                  : "border border-gray-200 text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              Dashboard
+            </button>
 
-           <button
-  onClick={() => scrollToSection("analytics")}
-  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition"
->
-  <BarChart3 size={18} />
-  Analytics
-</button>
+            <button
+              onClick={() => navigate("/dashboard/categories")}
+              className={`px-4 py-2 rounded-lg transition ${
+                isActive("/dashboard/categories")
+                  ? "bg-purple-600 text-white"
+                  : "border border-gray-200 text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              Categories
+            </button>
+
+            <button
+              onClick={() => navigate("/dashboard/analytics")}
+              className={`px-4 py-2 rounded-lg transition ${
+                isActive("/dashboard/analytics")
+                  ? "bg-purple-600 text-white"
+                  : "border border-gray-200 text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              Analytics
+            </button>
 
             <button
               onClick={onLogout}
@@ -70,7 +86,7 @@ const scrollToSection = (sectionId: string) => {
             </button>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(true)}
             className="md:hidden p-2 rounded-lg border border-gray-200"
@@ -79,7 +95,7 @@ const scrollToSection = (sectionId: string) => {
           </button>
         </div>
 
-        {/* USER INFO */}
+        {/* User Email */}
         {email && (
           <div className="px-4 pb-4 max-w-7xl mx-auto">
             <p className="text-sm text-gray-500">
@@ -92,16 +108,14 @@ const scrollToSection = (sectionId: string) => {
         )}
       </header>
 
-      {/* MOBILE DRAWER */}
+      {/* Mobile Drawer */}
       {menuOpen && (
         <>
-          {/* BACKDROP */}
           <div
             className="fixed inset-0 bg-black/40 z-40"
             onClick={() => setMenuOpen(false)}
           />
 
-          {/* DRAWER */}
           <div className="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-xl">
             <div className="flex items-center justify-between p-4 border-b">
               <div>
@@ -123,12 +137,42 @@ const scrollToSection = (sectionId: string) => {
             </div>
 
             <div className="p-4 space-y-3">
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition">
+              <button
+                onClick={() => navigate("/dashboard")}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                  isActive("/dashboard")
+                    ? "bg-purple-600 text-white"
+                    : "border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
+                <Home size={18} />
+                Dashboard
+              </button>
+
+              <button
+                onClick={() =>
+                  navigate("/dashboard/categories")
+                }
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                  isActive("/dashboard/categories")
+                    ? "bg-purple-600 text-white"
+                    : "border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
                 <LayoutGrid size={18} />
                 Categories
               </button>
 
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition">
+              <button
+                onClick={() =>
+                  navigate("/dashboard/analytics")
+                }
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                  isActive("/dashboard/analytics")
+                    ? "bg-purple-600 text-white"
+                    : "border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
                 <BarChart3 size={18} />
                 Analytics
               </button>

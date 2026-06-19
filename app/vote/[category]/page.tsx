@@ -6,7 +6,7 @@ import { toast } from "sonner";
 
 import { useVoteStore } from "@/src/store/vote-store";
 import { useCandidates } from "@/hooks/useCandidates";
-import VoteSuccessModal from "@/src/components/vote/VoteModal";
+import VoteSuccessModal from "@/src/components/mod/VoteModal";
 import NomineeCard from "@/src/components/vote/CandidateCard";
 import Loader from "@/src/components/vote/Loader";
 import { CATEGORIES } from "@/src/constants/categories";
