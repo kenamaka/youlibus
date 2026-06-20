@@ -21,27 +21,95 @@ type Vote = {
   user_agent?: string;
 };
 
+type Candidate = {
+  id: string;
+  vote_count: number;
+};
+
+type CityStat = {
+  city: string;
+  count: number;
+};
+
 export default function AnalyticsPage() {
   const [votes, setVotes] = useState<Vote[]>([]);
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [cityData, setCityData] = useState<CityStat[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchVotes();
+    fetchData();
   }, []);
 
-  async function fetchVotes() {
+  async function fetchData() {
     setLoading(true);
 
-    const { data } = await supabase
-      .from("votes")
-      .select("id, ip_address, created_at, user_agent");
+    const [{ data: votesData }, { data: candidatesData }] =
+      await Promise.all([
+        supabase
+          .from("votes")
+          .select("id, ip_address, created_at, user_agent"),
 
-    setVotes(data || []);
+        supabase.from("candidates").select("id, vote_count"),
+      ]);
+
+    const votesSafe = votesData || [];
+    const candidatesSafe = candidatesData || [];
+
+    setVotes(votesSafe);
+    setCandidates(candidatesSafe);
+
+    // 🔥 NEW: build top 10 IPs first
+    const ipMap: Record<string, number> = {};
+
+    votesSafe.forEach((v) => {
+      if (!v.ip_address) return;
+      ipMap[v.ip_address] = (ipMap[v.ip_address] || 0) + 1;
+    });
+
+    const topIps = Object.entries(ipMap)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10)
+      .map(([ip, count]) => ({ ip, count }));
+
+    // 🔥 Resolve cities once (NOT per render)
+    const cityResults = await Promise.all(
+      topIps.map(async ({ ip, count }) => {
+        try {
+          const res = await fetch(`https://ipapi.co/${ip}/json/`);
+          const data = await res.json();
+
+          const city =
+            data?.city ||
+            data?.region ||
+            "Unknown";
+
+          return { city, count };
+        } catch {
+          return { city: "Unknown", count };
+        }
+      })
+    );
+
+    setCityData(cityResults);
+
     setLoading(false);
   }
 
   /* =========================
-     🕒 HOURLY VOTING PATTERN
+     TOTAL VOTES (from candidates)
+  ========================== */
+  const totalVotes = useMemo(() => {
+    return candidates.reduce((sum, c) => sum + (c.vote_count || 0), 0);
+  }, [candidates]);
+
+  /* =========================
+     TOTAL VOTERS
+  ========================== */
+  const totalVoters = votes.length;
+
+  /* =========================
+     HOURLY ANALYTICS
   ========================== */
   const hourlyData = useMemo(() => {
     const hours: Record<number, number> = {};
@@ -58,20 +126,19 @@ export default function AnalyticsPage() {
   }, [votes]);
 
   /* =========================
-     📱 DEVICE BREAKDOWN
-     (basic detection)
+     DEVICE BREAKDOWN
   ========================== */
   const deviceData = useMemo(() => {
     let mobile = 0;
     let desktop = 0;
 
     votes.forEach((v) => {
-      const ua = v.user_agent?.toLowerCase() || "";
+      const ua = (v.user_agent || "").toLowerCase();
 
       if (
-        ua.includes("mobile") ||
         ua.includes("android") ||
-        ua.includes("iphone")
+        ua.includes("iphone") ||
+        ua.includes("mobile")
       ) {
         mobile++;
       } else {
@@ -85,33 +152,19 @@ export default function AnalyticsPage() {
     ];
   }, [votes]);
 
-  /* =========================
-     🌍 TOP IP ADDRESSES
-  ========================== */
-  const ipData = useMemo(() => {
-    const map: Record<string, number> = {};
-
-    votes.forEach((v) => {
-      if (!v.ip_address) return;
-      map[v.ip_address] = (map[v.ip_address] || 0) + 1;
-    });
-
-    return Object.entries(map)
-      .map(([ip, count]) => ({ ip, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 6);
-  }, [votes]);
-
   const COLORS = ["#7C3AED", "#22C55E"];
 
   if (loading) {
     return (
-      <div className="p-6 text-gray-500">Loading analytics...</div>
+      <div className="p-6 text-gray-500">
+        Loading analytics...
+      </div>
     );
   }
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 space-y-8">
+
       {/* HEADER */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">
@@ -126,32 +179,26 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white rounded-xl p-4">
           <p className="text-gray-500 text-sm">Total Votes</p>
-          <p className="text-2xl font-bold">{votes.length}</p>
+          <p className="text-2xl font-bold">{totalVotes}</p>
         </div>
 
         <div className="bg-white rounded-xl p-4">
-          <p className="text-gray-500 text-sm">Unique IPs</p>
-          <p className="text-2xl font-bold">
-            {new Set(votes.map((v) => v.ip_address)).size}
-          </p>
+          <p className="text-gray-500 text-sm">Total Voters</p>
+          <p className="text-2xl font-bold">{totalVoters}</p>
         </div>
 
         <div className="bg-white rounded-xl p-4">
           <p className="text-gray-500 text-sm">Mobile Votes</p>
-          <p className="text-2xl font-bold">
-            {deviceData[0].value}
-          </p>
+          <p className="text-2xl font-bold">{deviceData[0].value}</p>
         </div>
 
         <div className="bg-white rounded-xl p-4">
           <p className="text-gray-500 text-sm">Desktop Votes</p>
-          <p className="text-2xl font-bold">
-            {deviceData[1].value}
-          </p>
+          <p className="text-2xl font-bold">{deviceData[1].value}</p>
         </div>
       </div>
 
-      {/* HOURLY CHART */}
+      {/* HOURLY */}
       <div className="bg-white rounded-xl p-4">
         <h2 className="font-semibold mb-4">
           Voting Activity by Hour
@@ -173,8 +220,9 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      {/* DEVICE + IP */}
+      {/* DEVICE + CITIES */}
       <div className="grid md:grid-cols-2 gap-6">
+
         {/* DEVICE */}
         <div className="bg-white rounded-xl p-4">
           <h2 className="font-semibold mb-4">
@@ -204,27 +252,30 @@ export default function AnalyticsPage() {
           </div>
         </div>
 
-        {/* IP LIST */}
+        {/* TOP CITIES */}
         <div className="bg-white rounded-xl p-4">
           <h2 className="font-semibold mb-4">
-            Top Voting Locations (IP)
+            Top Voting Cities
           </h2>
 
           <div className="space-y-3">
-            {ipData.map((ip) => (
+            {cityData.map((c, i) => (
               <div
-                key={ip.ip}
+                key={i}
                 className="flex justify-between text-sm"
               >
-                <span className="text-gray-600">{ip.ip}</span>
+                <span className="text-gray-600">
+                  {c.city}
+                </span>
                 <span className="font-semibold">
-                  {ip.count}
+                  {c.count}
                 </span>
               </div>
             ))}
           </div>
         </div>
       </div>
+
     </div>
   );
 }
